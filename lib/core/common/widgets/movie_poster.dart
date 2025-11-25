@@ -20,9 +20,14 @@ class MoviePoster extends StatelessWidget {
             height: 180,
             color: AppColors.grey.withValues(alpha: 0.5),
           ),
-
-          imageUrl: posterUrl != null
-              ? 'https://image.tmdb.org/t/p/w500/$posterUrl'
+          errorWidget: (context, url, error) => Container(
+            width: 120,
+            height: 180,
+            color: AppColors.grey.withValues(alpha: 0.5),
+            child: Icon(Icons.movie, color: AppColors.grey),
+          ),
+          imageUrl: posterUrl != null && posterUrl!.isNotEmpty
+              ? '${AppConstants.imageBaseUrl}$posterUrl'
               : AppConstants.placeholderImage,
           width: 120,
           fit: BoxFit.cover,

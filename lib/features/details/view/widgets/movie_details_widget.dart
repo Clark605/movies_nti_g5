@@ -56,9 +56,13 @@ class MovieDetailsWidget extends StatelessWidget {
                                 value: progress.progress,
                               ),
                             ),
-                        imageUrl: bgUrl != null
-                            ? 'https://image.tmdb.org/t/p/w500/$bgUrl'
+                        imageUrl: (bgUrl != null && bgUrl!.isNotEmpty)
+                            ? '${AppConstants.imageBaseUrl}$bgUrl'
                             : AppConstants.placeholderImage,
+                        errorWidget: (context, url, error) => Container(
+                          color: AppColors.grey.withValues(alpha: 0.5),
+                          child: Icon(Icons.movie, color: AppColors.grey),
+                        ),
                         width: double.infinity,
                         fit: BoxFit.contain,
                       ),

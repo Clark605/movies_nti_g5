@@ -10,7 +10,7 @@ class SliverAppBarWidget extends StatelessWidget {
       title: Text('Details', style: Theme.of(context).textTheme.titleLarge),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_ios, color: AppColors.titleText),
-        onPressed: () => Navigator.canPop(context),
+        onPressed: () => Navigator.pop(context),
       ),
       actions: [
         IconButton(

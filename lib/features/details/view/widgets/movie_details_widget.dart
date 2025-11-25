@@ -3,7 +3,9 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:movies/core/common/widgets/movie_poster.dart';
 import 'package:movies/core/constants/app_assets.dart';
+import 'package:movies/core/constants/app_constants.dart';
 import 'package:movies/core/theme/app_colors.dart';
 
 class MovieDetailsWidget extends StatelessWidget {
@@ -18,8 +20,8 @@ class MovieDetailsWidget extends StatelessWidget {
     required this.genre,
     required this.description,
   });
-  final String bgUrl;
-  final String posterUrl;
+  final String? bgUrl;
+  final String? posterUrl;
   final String title;
   final double rating;
   final String year;
@@ -54,7 +56,9 @@ class MovieDetailsWidget extends StatelessWidget {
                                 value: progress.progress,
                               ),
                             ),
-                        imageUrl: 'https://image.tmdb.org/t/p/w500/$bgUrl',
+                        imageUrl: bgUrl != null
+                            ? 'https://image.tmdb.org/t/p/w500/$bgUrl'
+                            : AppConstants.placeholderImage,
                         width: double.infinity,
                         fit: BoxFit.contain,
                       ),
@@ -108,17 +112,7 @@ class MovieDetailsWidget extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(16),
-                      child: CachedNetworkImage(
-                        placeholder: (context, url) => Container(
-                          width: 120,
-                          height: 180,
-                          color: AppColors.grey.withValues(alpha: 0.5),
-                        ),
-
-                        imageUrl: 'https://image.tmdb.org/t/p/w500/$posterUrl',
-                        width: 120,
-                        fit: BoxFit.contain,
-                      ),
+                      child: MoviePoster(posterUrl: posterUrl),
                     ),
                     Expanded(
                       child: Padding(

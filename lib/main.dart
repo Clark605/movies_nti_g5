@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
       initialRoute: DetailsScreen.routeName,
       routes: {
         AppSection.routeName: (context) => const AppSection(),
-        DetailsScreen.routeName: (context) => const DetailsScreen(),
+        DetailsScreen.routeName: (context) =>
+            const DetailsScreen(movieId: 8197),
       },
     );
   }

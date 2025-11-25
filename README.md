@@ -1,16 +1,35 @@
-# movies
+# Movies App
 
-A new Flutter project.
+A Flutter application for browsing movies using The Movie Database (TMDB) API.
 
-## Getting Started
+## Setup Instructions
 
-This project is a starting point for a Flutter application.
+### Prerequisites
+- Flutter SDK (latest stable version)
+- Android Studio or VS code (for Android development)
 
-A few resources to get you started if this is your first Flutter project:
+### Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone the repository:
+```sh
+git clone <https://github.com/Clark605/movies_nti_g5>
+cd movies
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Install dependencies:
+```sh
+flutter pub get
+```
+
+3. Run the app:
+```sh
+flutter run
+```
+
+## Project Structure
+- `lib/core/` - Core functionality (theme, constants, network)
+- `lib/features/` - Feature modules
+- `assets/` - Images and icons
+
+## API Configuration
+This project uses TMDB API. The API key is configured in [`lib/core/constants/app_constants.dart`](lib/core/constants/app_constants.dart).

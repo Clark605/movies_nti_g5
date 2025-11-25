@@ -12,7 +12,7 @@ A Flutter application for browsing movies using The Movie Database (TMDB) API.
 
 1. Clone the repository:
 ```sh
-git clone <https://github.com/Clark605/movies_nti_g5>
+git clone https://github.com/Clark605/movies_nti_g5
 cd movies
 ```
 

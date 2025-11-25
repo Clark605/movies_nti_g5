@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:movies/core/constants/app_constants.dart';
 import 'package:movies/core/network/result_api.dart';
@@ -22,6 +23,7 @@ abstract class DetailsApi {
         return Error(errorMessage: json['status_message'] ?? 'Unknown error');
       }
     } catch (e) {
+      log(e.toString());
       return Error(errorMessage: e.toString());
     }
   }

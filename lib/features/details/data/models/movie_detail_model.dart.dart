@@ -5,7 +5,7 @@ class MovieDetailsModel {
   String? backdropPath;
   String? releaseDate;
   String? overview;
-  int? voteAverage;
+  double? voteAverage;
   List<Genres>? genres;
   int? runtime;
 

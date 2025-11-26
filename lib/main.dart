@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:movies/core/theme/app_theme.dart';
 import 'package:movies/features/app_section/view/app_section.dart';
+import 'package:movies/features/details/view/screens/details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Movies App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
-      initialRoute: AppSection.routeName,
-      routes: {AppSection.routeName: (context) => const AppSection()},
+      themeMode: ThemeMode.light,
+      initialRoute: DetailsScreen.routeName,
+      routes: {
+        AppSection.routeName: (context) => const AppSection(),
+        // For testing purpose, using a fixed movieId
+        // In real app, this should be navigated with actual movieId
+        DetailsScreen.routeName: (context) =>
+            const DetailsScreen(movieId: 8197),
+      },
     );
   }
 }

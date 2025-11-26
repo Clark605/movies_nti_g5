@@ -4,6 +4,14 @@ import 'package:movies/core/theme/app_colors.dart';
 abstract class AppTheme {
   static ThemeData appTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.primaryColor,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.primaryColor,
+      elevation: 0,
+      centerTitle: true,
+    ),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: AppColors.secondaryColor,
+    ),
     textTheme: TextTheme(
       bodyMedium: TextStyle(
         color: AppColors.bodyMedium,
@@ -27,7 +35,7 @@ abstract class AppTheme {
       ),
       titleLarge: TextStyle(
         color: AppColors.titleText,
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: FontWeight.w600,
       ),
     ),

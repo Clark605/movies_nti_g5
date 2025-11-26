@@ -1,4 +1,4 @@
-import 'package:movies/features/details/data/models/movie_detail_model.dart.dart';
+import 'package:movies/features/details/data/models/movie_detail_model.dart';
 
 class DetailsState {}
 

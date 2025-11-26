@@ -13,7 +13,7 @@ class SimilarMoviesShimmer extends StatelessWidget {
         child: GridView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 8,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 12,
             crossAxisSpacing: 12,

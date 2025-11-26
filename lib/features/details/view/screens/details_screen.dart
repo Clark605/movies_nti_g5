@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/features/details/view/widgets/movie_details_shimmer.dart';
@@ -12,7 +10,6 @@ import 'package:movies/features/details/view_model/details_state.dart';
 import 'package:movies/features/details/view_model/similar_cubit.dart';
 import 'package:movies/features/details/view_model/similar_state.dart';
 
-// ignore: must_be_immutable
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.movieId});
   static const String routeName = '/details';
@@ -24,7 +21,7 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBarWidget(),
+          const SliverAppBarWidget(),
           SliverToBoxAdapter(
             child: Column(
               children: [
@@ -47,10 +44,9 @@ class DetailsScreen extends StatelessWidget {
                     if (state is DetailsError) {
                       return Center(child: Text(state.errorMessage));
                     }
-                    return MovieDetailsShimmer();
+                    return const MovieDetailsShimmer();
                   },
                 ),
-                SizedBox.shrink(),
               ],
             ),
           ),
@@ -72,7 +68,6 @@ class DetailsScreen extends StatelessWidget {
                         SimilarMoviesWidget(
                           similarMovies: state.similarMovies!.results!,
                           onMovieTap: (movieId) {
-                            log(movieId.toString());
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -96,7 +91,7 @@ class DetailsScreen extends StatelessWidget {
                         'Similar movies',
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
-                      SimilarMoviesShimmer(),
+                      const SimilarMoviesShimmer(),
                     ],
                   );
                 },

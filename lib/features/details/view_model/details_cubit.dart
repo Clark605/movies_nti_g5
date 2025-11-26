@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/core/network/result_api.dart';
 import 'package:movies/features/details/data/api/details_api.dart';
-import 'package:movies/features/details/data/models/movie_detail_model.dart.dart';
+import 'package:movies/features/details/data/models/movie_detail_model.dart';
 import 'package:movies/features/details/view_model/details_state.dart';
 
 class DetailsCubit extends Cubit<DetailsState> {

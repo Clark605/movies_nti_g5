@@ -45,7 +45,7 @@ class MovieDetailsWidget extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),
@@ -92,7 +92,7 @@ class MovieDetailsWidget extends StatelessWidget {
                                 SvgPicture.asset(AppAssets.starIcon),
                                 Text(
                                   rating.toString(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: AppColors.orange,
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,

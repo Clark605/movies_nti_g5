@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:movies/core/constants/app_constants.dart';
 import 'package:movies/core/network/result_api.dart';
-import 'package:movies/features/details/data/models/movie_detail_model.dart.dart';
+import 'package:movies/features/details/data/models/movie_detail_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies/features/details/data/models/similar_movies_model.dart';
 

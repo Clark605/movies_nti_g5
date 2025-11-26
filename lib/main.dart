@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
       initialRoute: DetailsScreen.routeName,
       routes: {
         AppSection.routeName: (context) => const AppSection(),
+        // For testing purpose, using a fixed movieId
+        // In real app, this should be navigated with actual movieId
         DetailsScreen.routeName: (context) =>
             const DetailsScreen(movieId: 8197),
       },

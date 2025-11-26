@@ -19,7 +19,7 @@ class SimilarMoviesWidget extends StatelessWidget {
       child: GridView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: similarMovies.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 13,
           crossAxisSpacing: 10,
@@ -29,7 +29,12 @@ class SimilarMoviesWidget extends StatelessWidget {
         itemBuilder: (context, index) => MoviePoster(
           posterUrl:
               similarMovies[index].posterPath ?? AppConstants.placeholderImage,
-          onTap: () => onMovieTap(similarMovies[index].id!),
+          onTap: () {
+            final id = similarMovies[index].id;
+            if (id != null) {
+              onMovieTap(id);
+            }
+          },
         ),
       ),
     );

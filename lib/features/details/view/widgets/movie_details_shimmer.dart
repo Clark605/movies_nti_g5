@@ -23,7 +23,7 @@ class MovieDetailsShimmer extends StatelessWidget {
                     height: 210,
                     decoration: BoxDecoration(
                       color: AppColors.grey,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16),
                       ),

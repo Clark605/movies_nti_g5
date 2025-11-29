@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/features/details/view/screens/details_screen.dart';
 import 'package:movies/features/search/view/widgets/empty_state_widget.dart';
 import 'package:movies/features/search/view/widgets/search_movie_item.dart';
+import 'package:movies/features/search/view/widgets/text_form_feild_widget.dart';
 import 'package:movies/features/search/view_model/search_cubit.dart';
 import 'package:movies/features/search/view_model/search_state.dart';
 
@@ -39,45 +38,9 @@ class _SearchScreenState extends State<SearchScreen> {
           // Search Bar
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _searchController,
-              onChanged: (value) {
-                _searchCubit.searchMovies(value);
-              },
-              style: const TextStyle(color: AppColors.titleText),
-              decoration: InputDecoration(
-                hintText: 'Search for movies...',
-                hintStyle: TextStyle(color: AppColors.grey.withOpacity(0.6)),
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: SvgPicture.asset(
-                    AppAssets.searchBarIcon,
-                    colorFilter: ColorFilter.mode(
-                      AppColors.grey,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-                suffixIcon: _searchController.text.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear, color: AppColors.grey),
-                        onPressed: () {
-                          _searchController.clear();
-                          _searchCubit.clearSearch();
-                        },
-                      )
-                    : null,
-                filled: true,
-                fillColor: AppColors.grey.withOpacity(0.1),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-              ),
+            child: TextFormFeildWidget(
+              searchController: _searchController,
+              searchCubit: _searchCubit,
             ),
           ),
 

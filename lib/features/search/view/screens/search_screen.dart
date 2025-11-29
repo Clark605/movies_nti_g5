@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/features/details/view/screens/details_screen.dart';
 import 'package:movies/features/search/view/widgets/empty_state_widget.dart';
-import 'package:movies/features/search/view/widgets/search_movie_item.dart';
+import 'package:movies/features/search/view/widgets/movie_item.dart';
 import 'package:movies/features/search/view/widgets/text_form_feild_widget.dart';
 import 'package:movies/features/search/view_model/search_cubit.dart';
 import 'package:movies/features/search/view_model/search_state.dart';

@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
-import 'package:movies/features/home/view/screens/home_screen.dart';
-
+import 'package:movies/features/watchlist/view/screens/watchlist_screen.dart';
 
 class AppSection extends StatefulWidget {
   const AppSection({super.key});
@@ -15,59 +14,70 @@ class AppSection extends StatefulWidget {
 
 class _AppSectionState extends State<AppSection> {
   int _currentIndex = 0;
-  List<Widget> pages = [
-  const HomeScreen(),
-  const Center(child: Text('Search Page', style: TextStyle(color: Colors.white))),
-  const Center(child: Text('Watchlist Page', style: TextStyle(color: Colors.white))),
-];
+  final List<Widget> pages = [
+    const Center(child: Text('Home Page')),
+    const Center(child: Text('Search Page')),
+    const WatchlistScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (value) {
-          setState(() {
-            _currentIndex = value;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppAssets.homeIcon,
-              colorFilter: ColorFilter.mode(
-                _currentIndex == 0 ? AppColors.secondaryColor : AppColors.grey,
-                BlendMode.srcIn,
-              ),
-            ),
-            label: 'Home',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: AppColors.secondaryColor, width: 1),
           ),
-          BottomNavigationBarItem(
-            icon: SizedBox(
-              height: 24,
-              child: SvgPicture.asset(
-                AppAssets.searchBarIcon,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (value) {
+            setState(() {
+              _currentIndex = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                AppAssets.homeIcon,
                 colorFilter: ColorFilter.mode(
-                  _currentIndex == 1
+                  _currentIndex == 0
                       ? AppColors.secondaryColor
                       : AppColors.grey,
                   BlendMode.srcIn,
                 ),
               ),
+              label: 'Home',
             ),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              AppAssets.watchlistIcon,
-              colorFilter: ColorFilter.mode(
-                _currentIndex == 2 ? AppColors.secondaryColor : AppColors.grey,
-                BlendMode.srcIn,
+            BottomNavigationBarItem(
+              icon: SizedBox(
+                height: 24,
+                child: SvgPicture.asset(
+                  AppAssets.searchBarIcon,
+                  colorFilter: ColorFilter.mode(
+                    _currentIndex == 1
+                        ? AppColors.secondaryColor
+                        : AppColors.grey,
+                    BlendMode.srcIn,
+                  ),
+                ),
               ),
+              label: 'Search',
             ),
-            label: 'Watchlist',
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: SvgPicture.asset(
+                AppAssets.watchlistIcon,
+                colorFilter: ColorFilter.mode(
+                  _currentIndex == 2
+                      ? AppColors.secondaryColor
+                      : AppColors.grey,
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: 'Watchlist',
+            ),
+          ],
+        ),
       ),
     );
   }

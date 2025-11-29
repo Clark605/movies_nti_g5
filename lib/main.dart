@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movies/core/theme/app_theme.dart';
 import 'package:movies/features/app_section/view/app_section.dart';
 import 'package:movies/features/details/view/screens/details_screen.dart';
-import 'package:movies/features/details/view_model/details_cubit.dart';
-import 'package:movies/features/details/view_model/similar_cubit.dart';
-import 'package:movies/features/home/view_model/home_cubit.dart';
+import 'package:movies/features/watchlist/data/models/watchlist_movie_model.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize Hive
+  await Hive.initFlutter();
+  Hive.registerAdapter(WatchlistMovieAdapter());
+  await Hive.openBox<WatchlistMovieModel>('watchlist');
   runApp(const MyApp());
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.light,
-    ),
-  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,26 +20,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => DetailsCubit()),
-        BlocProvider(create: (context) => SimilarCubit()),
-        BlocProvider(create: (context) => HomeCubit()..fetchHomeData()),
-      ],
-      child: MaterialApp(
-        title: 'Movies App',
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.appTheme,
-        themeMode: ThemeMode.light,
-        initialRoute: AppSection.routeName,
-        routes: {
-          AppSection.routeName: (context) => const AppSection(),
-          DetailsScreen.routeName: (context) {
-            final movieId = ModalRoute.of(context)?.settings.arguments as int?;
-            return DetailsScreen(movieId: movieId ?? 8197);
-          },
-        },
-      ),
+    return MaterialApp(
+      title: 'Movies App',
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.appTheme,
+      themeMode: ThemeMode.light,
+      initialRoute: AppSection.routeName,
+      routes: {
+        AppSection.routeName: (context) => const AppSection(),
+        // For testing purpose, using a fixed movieId
+        // In real app, this should be navigated with actual movieId
+        DetailsScreen.routeName: (context) =>
+            const DetailsScreen(movieId: 8197),
+      },
     );
   }
 }

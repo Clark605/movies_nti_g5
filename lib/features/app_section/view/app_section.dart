@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
+import 'package:movies/features/home/view/screens/home_screen.dart';
+
 
 class AppSection extends StatefulWidget {
   const AppSection({super.key});
@@ -14,10 +16,10 @@ class AppSection extends StatefulWidget {
 class _AppSectionState extends State<AppSection> {
   int _currentIndex = 0;
   List<Widget> pages = [
-    const Center(child: Text('Cart Page')),
-    const Center(child: Text('Favorites Page')),
-    const Center(child: Text('Profile Page')),
-  ];
+  const HomeScreen(),
+  const Center(child: Text('Search Page', style: TextStyle(color: Colors.white))),
+  const Center(child: Text('Watchlist Page', style: TextStyle(color: Colors.white))),
+];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

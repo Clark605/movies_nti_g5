@@ -25,7 +25,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
       themeMode: ThemeMode.light,
-      initialRoute: DetailsScreen.routeName,
+      initialRoute: AppSection.routeName,
+
+      /// DetailsScreen.routeName,
       routes: {
         AppSection.routeName: (context) => const AppSection(),
         // For testing purpose, using a fixed movieId

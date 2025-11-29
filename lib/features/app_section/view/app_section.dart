@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
+import 'package:movies/features/search/view/screens/search_screen.dart';
 
 class AppSection extends StatefulWidget {
   const AppSection({super.key});
@@ -15,6 +16,7 @@ class _AppSectionState extends State<AppSection> {
   int _currentIndex = 0;
   List<Widget> pages = [
     const Center(child: Text('Cart Page')),
+    SearchScreen(),
     const Center(child: Text('Favorites Page')),
     const Center(child: Text('Profile Page')),
   ];

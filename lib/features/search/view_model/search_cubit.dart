@@ -7,13 +7,13 @@ import 'package:movies/features/search/view_model/search_state.dart';
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(SearchInitial());
 
-  void fetchDetails(String search) async {
+  Future<void> fetchDetails(String search) async {
     emit(SearchLoading());
     final result = await SearchApi.fetchSearch(search);
     switch (result) {
-      case Success<SearchModel>():
-        emit(SearchSuccess(result.data));
-      case Error<SearchModel>():
+      case Success<SearchResponseModel>():
+        emit(SearchLoaded(result.fromJson));
+      case Error<SearchResponseModel>():
         emit(SearchError(result.errorMessage));
     }
   }

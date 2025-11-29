@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
+import 'package:movies/features/home/view/screens/home_screen.dart';
 import 'package:movies/features/watchlist/view/screens/watchlist_screen.dart';
 
 class AppSection extends StatefulWidget {
@@ -15,7 +16,7 @@ class AppSection extends StatefulWidget {
 class _AppSectionState extends State<AppSection> {
   int _currentIndex = 0;
   final List<Widget> pages = [
-    const Center(child: Text('Home Page')),
+    const HomeScreen(),
     const Center(child: Text('Search Page')),
     const WatchlistScreen(),
   ];

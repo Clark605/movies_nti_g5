@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       body: SafeArea(
         child: BlocBuilder<HomeCubit, HomeState>(
+          bloc: HomeCubit()..fetchHomeData(),
           builder: (context, state) {
             if (state is HomeLoading) {
               return const Center(
@@ -81,7 +82,9 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             final movie = recommendedMovies[index];
                             return Padding(
-                              padding: EdgeInsets.only(right: index == 3 ? 0 : 12),
+                              padding: EdgeInsets.only(
+                                right: index == 3 ? 0 : 12,
+                              ),
                               child: Stack(
                                 clipBehavior: Clip.none,
                                 children: [
@@ -104,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                                             fontFamily: 'Montserrat',
                                             foreground: Paint()
                                               ..style = PaintingStyle.stroke
-                                              ..strokeWidth = 1.2 
+                                              ..strokeWidth = 1.2
                                               ..color = const Color(0xFF0296E5),
                                           ),
                                         ),
@@ -155,13 +158,14 @@ class HomeScreen extends StatelessWidget {
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 12,
-                            childAspectRatio: 0.67,
-                          ),
-                          itemCount:
-                              popularMovies.length > 15 ? 15 : popularMovies.length,
+                                crossAxisCount: 3,
+                                mainAxisSpacing: 16,
+                                crossAxisSpacing: 12,
+                                childAspectRatio: 0.67,
+                              ),
+                          itemCount: popularMovies.length > 15
+                              ? 15
+                              : popularMovies.length,
                           itemBuilder: (context, index) {
                             final movie = popularMovies[index];
                             return MovieCard(

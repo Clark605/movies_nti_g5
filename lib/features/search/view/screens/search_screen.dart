@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/constants/app_assets.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/features/details/view/screens/details_screen.dart';
+import 'package:movies/features/search/view/widgets/empty_state_widget.dart';
 import 'package:movies/features/search/view/widgets/search_movie_item.dart';
 import 'package:movies/features/search/view_model/search_cubit.dart';
 import 'package:movies/features/search/view_model/search_state.dart';
@@ -87,23 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
               builder: (context, state) {
                 // Initial State
                 if (state is SearchInitial) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.search,
-                          size: 80,
-                          color: AppColors.grey.withOpacity(0.5),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Search for movies',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ],
-                    ),
-                  );
+                  return EmptyStateWidget();
                 }
 
                 // Loading State
@@ -117,30 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
                 // Empty State (No Results)
                 if (state is SearchEmpty) {
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.movie_outlined,
-                          size: 100,
-                          color: AppColors.grey.withOpacity(0.5),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'We Are Sorry, We Can\nNot Find The Movie :(',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Find your movie by Type title,\ncategories, years, etc',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodySmall,
-                        ),
-                      ],
-                    ),
-                  );
+                  return EmptyStateWidget();
                 }
 
                 // Error State
